@@ -9,9 +9,9 @@ These are the following folders: <br/>
 `cd terraform/env/dev`
 
 And then run the below scripts to install it in your AWS account: <br/>
-`terraform init
-terraform validate
-terraform plan
+`terraform init <br/>
+terraform validate<br/>
+terraform plan <br/>
 terraform apply`
 
 4. test - This folder contains all the test scripts.
