@@ -6,13 +6,13 @@ These are the following folders:
 2. src - This is the main folder for the lambda function file
 
 3. terraform - This folder contains the IAC scripts. Make sure you enter into the correct env folder using the below command:
-cd terraform/env/dev
+`cd terraform/env/dev`
 
 And then run the below scripts to install it in your AWS account
-terraform init
+`terraform init
 terraform validate
 terraform plan
-terraform apply
+terraform apply`
 
 4. test - This folder contains all the test scripts.
 
