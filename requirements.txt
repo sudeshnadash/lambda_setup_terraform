@@ -1,2 +1,2 @@
-pyjwt
-pytz
+boto3
+moto
