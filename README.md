@@ -1,14 +1,14 @@
 This repository is an example to create terraform resources for lambda function and also setting up lambda function in local without using SAM.
 
-These are the following folders:
+These are the following folders: <br/>
 1. layer - This folder contains all the files in my custom layer. This sits inside python folder so the AWS treats it as a python module
 
-2. src - This is the main folder for the lambda function file
+2. src - This is the main folder for the lambda function file<br/>
 
-3. terraform - This folder contains the IAC scripts. Make sure you enter into the correct env folder using the below command:
+3. terraform - This folder contains the IAC scripts. Make sure you enter into the correct env folder using the below command:<br/>
 `cd terraform/env/dev`
 
-And then run the below scripts to install it in your AWS account
+And then run the below scripts to install it in your AWS account: <br/>
 `terraform init
 terraform validate
 terraform plan
