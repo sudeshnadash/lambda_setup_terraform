@@ -9,7 +9,7 @@ resource "aws_s3_bucket" "lambda_bucket" {
   bucket = "${var.stage}-${var.project}-lambda"
 }
 
-data "archive_file" "lambda_dashboard" {
+data "archive_file" "lambda_zip" {
   type = "zip"
 
   source_dir  = "../../../src"
@@ -32,19 +32,14 @@ resource "aws_s3_object" "lambda_dashboard" {
 #################################################################################
 # list_dashboards
 resource "aws_lambda_function" "list_dashboards" {
-  #checkov:skip=CKV_AWS_272:Ensure AWS Lambda function is configured to validate code-signing
-  #checkov:skip=CKV_AWS_115:Ensure that AWS Lambda function is configured for function-level concurrent execution limit
-  #checkov:skip=CKV_AWS_117:Ensure that AWS Lambda function is configured inside a VPC
-  #checkov:skip=CKV_AWS_116:Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)
-  #checkov:skip=CKV_AWS_173:Check encryption settings for Lambda environmental variable
-  function_name = "${var.stage}-${var.project}-listDashboards"
+  function_name = "create_student"
 
   s3_bucket = aws_s3_bucket.lambda_bucket.id
   s3_key    = aws_s3_object.lambda_dashboard.key
 
   architectures = ["arm64"]
   runtime       = "python3.10"
-  handler       = "api/handlers/list_dashboards.handler"
+  handler       = "api/handlers/create_student.lambda_handler"
   memory_size   = 256
   tracing_config {
     mode = "Active"
