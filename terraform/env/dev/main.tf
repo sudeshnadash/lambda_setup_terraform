@@ -1,7 +1,7 @@
 locals {
   stage       = "dev"
   aws_region  = "us-east-1"
-  aws_profile = "poc_aws_profile"
+  aws_profile = "default"
   project     = "poc_student"
   account_id  = "090350722320"
 }
@@ -17,8 +17,5 @@ module "base" {
   project = local.project
   
   account_id  = local.account_id
-
-  #DynamoDB
-  deletion_protection      = false
 
 }

@@ -30,9 +30,3 @@ variable "account_id" {
   description = "AWS Account ID"
 }
 
-## DynamoDB
-variable "deletion_protection" {
-  type        = string
-  description = "A value that indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when deletion protection is enabled"
-}
-
