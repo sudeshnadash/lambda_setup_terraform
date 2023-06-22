@@ -3,7 +3,7 @@ locals {
   aws_region  = "us-east-1"
   aws_profile = "poc_aws_profile"
   project     = "poc_student"
-  account_id  = "544251493436"
+  account_id  = "090350722320"
 }
 
 module "base" {
