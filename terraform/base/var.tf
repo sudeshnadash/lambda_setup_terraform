@@ -20,11 +20,6 @@ variable "stage" {
   }
 }
 
-variable "project" {
-  type        = string
-  description = "Main project or application name"
-}
-
 variable "account_id" {
   type        = string
   description = "AWS Account ID"

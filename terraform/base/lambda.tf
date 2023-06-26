@@ -7,10 +7,15 @@ data "archive_file" "lambda_zip" {
 resource "aws_lambda_function" "lambda_function" {
   function_name = "${var.stage}-create_student"
   filename   = data.archive_file.lambda_zip.output_path
+  description   = "My awesome lambda function"
   architectures = ["arm64"]
   runtime       = "python3.10"
-  handler       = "api/handlers/create_student.lambda_handler"
+  handler       = "create_student.lambda_handler"
   memory_size   = 256
+  publish       = true
+  tags = {
+    Module = "lambda-with-layer"
+  }
   tracing_config {
     mode = "Active"
   }
@@ -21,6 +26,7 @@ resource "aws_lambda_function" "lambda_function" {
   source_code_hash = data.archive_file.lambda_zip.output_base64sha256
 
   role = aws_iam_role.my_role.arn
+  depends_on = [aws_lambda_layer_version.my_layer]
 }
 resource "aws_cloudwatch_log_group" "lambda_logs" {
   name              = "/aws/lambda/${aws_lambda_function.lambda_function.function_name}"
