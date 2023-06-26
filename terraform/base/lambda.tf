@@ -52,6 +52,11 @@ resource "aws_iam_role" "my_role" {
   EOF
 }
 
+resource "aws_iam_role_policy_attachment" "lambda_policy" {
+  role = aws_iam_role.my_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
+
 #define variables
 locals {
   layer_zip_path    = "my_layer.zip"
